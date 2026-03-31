@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xóa tài khoản</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 80px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    p {
+      color: #555;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #d9534f;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #c9302c;
+    }
+    .success {
+      display: none;
+      color: green;
+      text-align: center;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Xóa tài khoản</h1>
+    <p>
+      Nếu bạn muốn xóa tài khoản và toàn bộ dữ liệu liên quan, vui lòng điền thông tin bên dưới.
+      Yêu cầu sẽ được xử lý trong vòng 3-7 ngày làm việc.
+    </p>
+
+    <form id="deleteForm">
+      <label>Email hoặc số điện thoại</label>
+      <input type="text" id="contact" required />
+
+      <label>Lý do (không bắt buộc)</label>
+      <textarea id="reason"></textarea>
+
+      <button type="submit">Gửi yêu cầu xóa tài khoản</button>
+    </form>
+
+    <div class="success" id="successMsg">
+      ✅ Yêu cầu của bạn đã được gửi. Chúng tôi sẽ xử lý sớm nhất.
+      Liên hệ Email: hqgroup.hqtech@gmail.com hoặc sđt: 0867.728.615 để được hỗ trợ
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('deleteForm');
+    const successMsg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const contact = document.getElementById('contact').value;
+      const reason = document.getElementById('reason').value;
+
+      // TODO: gửi API backend ở đây
+      console.log('Delete request:', { contact, reason });
+
+      form.reset();
+      successMsg.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
